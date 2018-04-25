@@ -52,7 +52,7 @@ public class DemoActivity extends Activity {
 
     private void getFile() {
         //目前支持txt doc pdf ppt xls wps docx pptx xlsx类型的文档
-        DLFilePicker.getInstance().setFileTypes(new String[]{"pdf"});
+        DLFilePicker.getInstance().setFileTypes(new String[]{".pdf"});
         DLFilePicker.getInstance()
                 .getFile(DemoActivity.this, new DLFilePickerListener() {
                     @Override
