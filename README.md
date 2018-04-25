@@ -8,13 +8,13 @@
 ##Quick to use
 1. add reference
 
-```
+```groovy
 compile 'io.github.dltech21:DLFilePicker:1.0.0'
 ```
 
 2. get file
 
-```
+```java
 //目前支持txt doc pdf ppt xls wps docx pptx xlsx类型的文档
 DLFilePicker.getInstance().setFileTypes(new String[]{".pdf"});
 DLFilePicker.getInstance()
