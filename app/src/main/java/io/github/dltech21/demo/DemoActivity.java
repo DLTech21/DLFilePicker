@@ -36,23 +36,31 @@ public class DemoActivity extends Activity {
                 .onGranted(new Action() {
                     @Override
                     public void onAction(List<String> permissions) {
-                        DLFilePicker.getInstance().getFile(DemoActivity.this, new DLFilePickerListener() {
-                            @Override
-                            public void onSuccess(List<FileItem> files) {
-                                mData.addAll(files);
-                                fileAdapter.notifyDataSetChanged();
-                            }
-                        });
+                        getFile();
                     }
                 })
                 .start();
     }
 
-    public void initView() {
+    private void initView() {
         rvFile = (RecyclerView) findViewById(R.id.rv_photo);
         rvFile.setLayoutManager(new LinearLayoutManager(this));
         mData = new LinkedList<>();
         fileAdapter = new FileAdapter(this, mData);
         rvFile.setAdapter(fileAdapter);
     }
+
+    private void getFile() {
+        //目前支持txt doc pdf ppt xls wps docx pptx xlsx类型的文档
+        DLFilePicker.getInstance().setFileTypes(new String[]{"pdf"});
+        DLFilePicker.getInstance()
+                .getFile(DemoActivity.this, new DLFilePickerListener() {
+                    @Override
+                    public void onSuccess(List<FileItem> files) {
+                        mData.addAll(files);
+                        fileAdapter.notifyDataSetChanged();
+                    }
+                });
+    }
+
 }
