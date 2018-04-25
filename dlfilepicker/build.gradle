@@ -35,5 +35,5 @@ publish {
     artifactId = 'DLFilePicker'
     publishVersion = '1.0.0'
     desc = 'FilePicker for Android'
-    website = 'https://github.com/DLTech21/PdfRender-PdfGo'
+    website = 'https://github.com/DLTech21/DLFilePicker'
 }
