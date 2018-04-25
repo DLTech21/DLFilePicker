@@ -6,7 +6,7 @@
 1. add reference
 
 ```
-compile 'io.github.dltech21:dlfilepicker:1.0.0'
+compile 'io.github.dltech21:DLFilePicker:1.0.0'
 ```
 
 2. get file

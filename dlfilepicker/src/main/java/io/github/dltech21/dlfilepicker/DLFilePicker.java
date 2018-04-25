@@ -14,8 +14,7 @@ import java.util.List;
 import io.github.dltech21.dlfilepicker.model.FileItem;
 
 /**
- * @author donal
- * @date 2018/4/25
+ * Created by donal on 2018/4/25.
  */
 
 public class DLFilePicker {
