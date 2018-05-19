@@ -14,6 +14,7 @@ import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -60,6 +61,21 @@ public class DLFilePickerActivity extends AppCompatActivity {
         mData = new LinkedList<>();
         fileAdapter = new FileAdapter(this, mData);
         rvFile.setAdapter(fileAdapter);
+        ItemClickSupport.addTo(rvFile).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                FileItem fileItem = mData.get(position);
+                DLFilePicker.getInstance().finishselectfile(fileItem);
+                finish();
+            }
+        });
+        ItemClickSupport.addTo(rvFile).setOnItemLongClickListener(new ItemClickSupport.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClicked(RecyclerView recyclerView, int position, View v) {
+                return false;
+            }
+        });
+
     }
 
     private void initToolbar() {

@@ -28,6 +28,8 @@ public class DLFilePicker {
 
     private DLFilePickerListener listener;
 
+    private DLFilePickerSelectListener dlFilePickerSelectListener;
+
     public DLFilePicker() {
         myHandler = new MyHandler();
     }
@@ -150,7 +152,16 @@ public class DLFilePicker {
         }
     }
 
-    public void selectFile(Context mContext, String[] fileFilter) {
+    public void finishselectfile(FileItem item) {
+        if (dlFilePickerSelectListener != null) {
+            List<FileItem> files = new ArrayList<>();
+            files.add(item);
+            dlFilePickerSelectListener.onSuccess(files);
+        }
+    }
+
+    public void selectFile(Context mContext, String[] fileFilter, DLFilePickerSelectListener listener) {
+        this.dlFilePickerSelectListener = listener;
         DLFilePickerActivity.open(mContext, fileFilter);
     }
 }
