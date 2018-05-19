@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
@@ -22,45 +23,22 @@ import io.github.dltech21.dlfilepicker.model.FileItem;
  */
 
 public class DemoActivity extends Activity {
-    private RecyclerView rvFile;
-    private FileAdapter fileAdapter;
-    private List<FileItem> mData;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_demo);
         initView();
-        AndPermission.with(this)
-                .permission(Permission.Group.STORAGE)
-                .onGranted(new Action() {
-                    @Override
-                    public void onAction(List<String> permissions) {
-                        getFile();
-                    }
-                })
-                .start();
     }
 
     private void initView() {
-        rvFile = (RecyclerView) findViewById(R.id.rv_photo);
-        rvFile.setLayoutManager(new LinearLayoutManager(this));
-        mData = new LinkedList<>();
-        fileAdapter = new FileAdapter(this, mData);
-        rvFile.setAdapter(fileAdapter);
+        findViewById(R.id.select).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DLFilePicker.getInstance().selectFile(DemoActivity.this, new String[]{".pdf"});
+            }
+        });
     }
 
-    private void getFile() {
-        //目前支持txt doc pdf ppt xls wps docx pptx xlsx类型的文档
-        DLFilePicker.getInstance().setFileTypes(new String[]{".pdf"});
-        DLFilePicker.getInstance()
-                .getFile(DemoActivity.this, new DLFilePickerListener() {
-                    @Override
-                    public void onSuccess(List<FileItem> files) {
-                        mData.addAll(files);
-                        fileAdapter.notifyDataSetChanged();
-                    }
-                });
-    }
 
 }

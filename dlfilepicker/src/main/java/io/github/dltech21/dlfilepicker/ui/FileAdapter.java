@@ -1,4 +1,4 @@
-package io.github.dltech21.demo;
+package io.github.dltech21.dlfilepicker.ui;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import io.github.dltech21.dlfilepicker.R;
 import io.github.dltech21.dlfilepicker.model.FileItem;
 
 /**

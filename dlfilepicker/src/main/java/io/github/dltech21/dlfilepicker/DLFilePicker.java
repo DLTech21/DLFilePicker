@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.github.dltech21.dlfilepicker.model.FileItem;
+import io.github.dltech21.dlfilepicker.ui.DLFilePickerActivity;
 
 /**
  * Created by donal on 2018/4/25.
@@ -147,5 +148,9 @@ public class DLFilePicker {
                     break;
             }
         }
+    }
+
+    public void selectFile(Context mContext, String[] fileFilter) {
+        DLFilePickerActivity.open(mContext, fileFilter);
     }
 }
