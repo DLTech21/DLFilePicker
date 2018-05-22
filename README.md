@@ -11,7 +11,7 @@
 1. add reference
 
 ```groovy
-compile 'io.github.dltech21:DLFilePicker:1.0.0'
+compile 'io.github.dltech21:DLFilePicker:1.0.1'
 ```
 
 2. get file
@@ -25,4 +25,15 @@ DLFilePicker.getInstance()
             public void onSuccess(List<FileItem> files) {
             }
         });
+```
+
+or
+
+```java
+DLFilePicker.getInstance().selectFile(DemoActivity.this, new String[]{".pdf"}, new DLFilePickerSelectListener() {
+                    @Override
+                    public void onSuccess(List<FileItem> files) {
+                        Toast.makeText(DemoActivity.this, files.get(0).getFilePath(),Toast.LENGTH_SHORT).show();
+                    }
+                });
 ```
